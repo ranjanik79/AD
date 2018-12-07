@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="task" label="Active Directory" max_length="40" name="x_258851_active_di_active_directory" sizeclass="1320" type="collection">
+        <element label="AD Groups" mandatory="true" max_length="32" name="u_ad_groups" reference="sys_user_group" type="reference"/>
+        <element attributes="no_sort=true,slushbucket_ref_no_expand=true" label="group" mandatory="true" max_length="1024" name="u_group" reference="u_sys_user" type="glide_list"/>
+        <element label="Requested For" max_length="32" name="u_requested_for" reference="sys_user" type="reference"/>
+    </element>
+</database>

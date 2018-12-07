@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_258851_active_di_ad</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>SplitRITM</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[//(function executeRule(current, previous /*null when async*/) {
+
+	// Add your code here
+split(current);
+
+
+
+function split(current) {
+
+
+   //If more than one piece of a consumable model is ordered, generate multiple items for this model.
+
+
+   //var qty = current.quantity;
+	var qty = 3;
+
+
+
+   for (var i=2; i<= qty; i++) {
+
+   var user = current.requested_for;
+   var group = current.u_glide_list_group;
+	   gs.addInfoMessage(current.sys_id);
+
+   //var ritm = new GlideRecord('x_258851_active_di_ad');
+   var ritm = new GlideRecord('sc_req_item');  
+
+
+   ritm.initialize();
+
+
+   ritm.state = current.state;
+   gs.addInfoMessage(current.state);
+
+  ritm.request = current.request;
+gs.addInfoMessage(current.request);
+
+  ritm.cat_item = current.cat_item ;
+
+
+   ritm.short_description = current.short_description +   " (generated from business rule " + i + " af " + qty + ")";
+
+
+   ritm.u_information_for_notification = "<div/>";
+
+
+   var SID = ritm.insert();
+   gs.addInfoMessage(SID);
+  
+
+
+   }
+
+
+
+  var me = new GlideRecord('sc_req_item');
+
+
+  me.get(current.sys_id);
+
+
+ me.short_description+= " (1 of " + qty + ")";
+
+
+ me.quantity = 1;
+
+
+ me.update();
+ 
+	
+
+}
+
+
+//})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-09 14:35:43</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ece75a25db0123007435112039961958</sys_id>
+        <sys_mod_count>38</sys_mod_count>
+        <sys_name>SplitRITM</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Active Directory" source="x_258851_active_di">a7b3e225dba023007435112039961959</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Active Directory">a7b3e225dba023007435112039961959</sys_scope>
+        <sys_update_name>sys_script_ece75a25db0123007435112039961958</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-11 16:41:36</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=ece75a25db0123007435112039961958"/>
+</record_update>

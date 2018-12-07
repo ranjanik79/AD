@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sc_request" label="AD" max_length="40" name="x_258851_active_di_ad" sizeclass="19" type="collection">
+        <element attributes="no_sort=true,slushbucket_ref_no_expand=true" label="group" mandatory="true" max_length="1024" name="u_glide_list_group" reference="sys_user_group" type="glide_list"/>
+    </element>
+</database>

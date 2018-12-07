@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="label" max_length="40" name="option" type="collection">
+        <element label="New Data Structure" max_length="800" name="x_258851_active_di_u_data_structure_3" type="data_structure"/>
+        <element attributes="no_sort=true,slushbucket_ref_no_expand=true" label="New List" max_length="1024" name="x_258851_active_di_u_glide_list_4" reference="sys_user_group" type="glide_list"/>
+        <element label="Requested For" max_length="32" name="x_258851_active_di_u_reference_1" reference="sys_user" type="reference"/>
+        <element attributes="base_start=true" label="New Table Name" max_length="80" name="x_258851_active_di_u_table_name_5" type="table_name"/>
+    </element>
+</database>
